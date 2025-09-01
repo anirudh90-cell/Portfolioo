@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anirudh Sharma | MERN Stack Developer</title>
+  <meta name="description" content="Anirudh Sharma – MERN Stack Developer (Indore). Portfolio, projects, skills, experience and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      /* Inspired by modern portfolio palettes while staying original */
+      --bg:#0f1220;          /* rich charcoal */
+      --panel:#14182b;       /* slightly lighter */
+      --muted:#94a3b8;       /* slate */
+      --text:#e6f1ff;        /* near-white */
+      --accent:#56e0c5;      /* teal-mint */
+      --accent-2:#a78bfa;    /* soft violet */
+      --danger:#ff6b6b;
+      --ring: 0 0 0 3px rgba(86,224,197,.25);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(1200px 600px at 80% -20%, rgba(167,139,250,.15), transparent 60%),radial-gradient(900px 500px at -10% 10%, rgba(86,224,197,.12), transparent 60%),var(--bg);color:var(--text);font:400 16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif}
+    a{color:var(--accent);text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+    
+    /* Header */
+    .site-header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.2) blur(10px);background:linear-gradient(180deg, rgba(15,18,32,.9), rgba(15,18,32,.6));border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{max-width:var(--maxw);margin:auto;padding:10px 18px;display:flex;align-items:center;gap:10px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px rgba(86,224,197,.2)}
+    .spacer{flex:1}
+    .nav a{color:var(--text);opacity:.85}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{padding:8px 12px;border-radius:999px}
+    .nav-links a:hover, .nav-links a:focus{background:rgba(255,255,255,.06);outline:none}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;border-radius:999px;background:linear-gradient(135deg, var(--accent), #79ffe1);color:#06271f;font-weight:700;border:none;cursor:pointer;box-shadow:var(--shadow)}
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,.12);color:var(--text);box-shadow:none}
+    .btn:focus{outline:none;box-shadow:var(--ring)}
+
+    /* Sections */
+    section{padding:100px 18px}
+    .container{max-width:var(--maxw);margin:auto}
+    .grid{display:grid;gap:30px}
+    .grid-2{grid-template-columns:1.1fr .9fr}
+
+    /* Hero */
+    .hero{padding-top:120px}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:12px;color:var(--muted);background:rgba(255,255,255,.03)}
+    .eyebrow .ping{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 10px rgba(86,224,197,.15)}
+    .hero h1{font-size:48px;line-height:1.1;margin:14px 0 8px}
+    .hero h1 span{color:var(--accent)}
+    .hero p{max-width:720px;color:var(--muted)}
+    .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .stats{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px}
+    .stat{min-width:140px;padding:12px 14px;border-radius:14px;background:rgba(167,139,250,.08);border:1px solid rgba(167,139,250,.25)}
+    .stat b{display:block;font-size:22px}
+
+    /* Cards */
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    .card h3{margin:.2rem 0 1rem}
+
+    /* Tags */
+    .tags{display:flex;flex-wrap:wrap;gap:8px}
+    .tag{padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);color:var(--muted);font-size:13px;background:rgba(255,255,255,.02)}
+
+    /* Lists */
+    .list{display:grid;gap:14px}
+    .list li{display:flex;gap:12px;align-items:flex-start}
+    .bullet{width:9px;height:9px;border-radius:50%;margin-top:7px;background:var(--accent)}
+
+    /* Project grid */
+    .proj-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr))}
+    .proj{position:relative;overflow:hidden}
+    .proj h4{margin:.3rem 0 .2rem}
+    .proj .meta{font-size:13px;color:var(--muted)}
+    .proj .cover{aspect-ratio:16/10;border-radius:14px;background:linear-gradient(120deg, rgba(86,224,197,.25), rgba(167,139,250,.25));border:1px solid rgba(255,255,255,.08);display:grid;place-items:center;font-weight:700}
+
+    /* Timeline */
+    .timeline{position:relative}
+    .timeline:before{content:"";position:absolute;left:16px;top:0;bottom:0;width:2px;background:linear-gradient(var(--accent), transparent)}
+    .item{position:relative;padding-left:44px;margin-bottom:24px}
+    .item:before{content:"";position:absolute;left:10px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px rgba(86,224,197,.18)}
+    .item h4{margin:0}
+    .item .where{color:var(--muted);font-size:14px}
+
+    /* Footer */
+    footer{padding:40px 18px;border-top:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.2)}
+    .foot{max-width:var(--maxw);margin:auto;display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .grid-2{grid-template-columns:1fr}
+      .hero h1{font-size:40px}
+      .site-header .nav-links{display:none}
+      .menu-btn{display:inline-flex}
+    }
+    @media (min-width: 901px){
+      .menu-btn{display:none}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <nav class="nav">
+      <div class="brand"><span class="dot" aria-hidden="true"></span> <span>ANIRUDH&nbsp;SHARMA</span></div>
+      <div class="spacer"></div>
+      <div class="nav-links" role="navigation" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#certs">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="btn secondary menu-btn" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+    </nav>
+    <div id="mobileMenu" hidden>
+      <div class="container" style="padding:12px 18px 18px">
+        <div class="tags" role="navigation" aria-label="Mobile">
+          <a class="tag" href="#home">Home</a>
+          <a class="tag" href="#about">About</a>
+          <a class="tag" href="#skills">Skills</a>
+          <a class="tag" href="#projects">Projects</a>
+          <a class="tag" href="#experience">Experience</a>
+          <a class="tag" href="#education">Education</a>
+          <a class="tag" href="#certs">Certifications</a>
+          <a class="tag" href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="container grid grid-2">
+      <div>
+        <span class="eyebrow"><span class="ping" aria-hidden="true"></span> MERN Stack Developer • Indore</span>
+        <h1>Hi, I'm <span>Anirudh Sharma</span><br>Building fast, clean and human‑friendly web apps.</h1>
+        <p>
+          MCA student (2023–2025) and <b>MERN</b> developer focused on responsive, efficient solutions that elevate user experience. I love solving problems, learning continuously and delivering polished UIs.
+        </p>
+        <div class="cta-row">
+          <a class="btn" href="#contact">Contact Me</a>
+          <a class="btn secondary" href="#projects">View Projects</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>1+ yr</b><small>Hands‑on dev</small></div>
+          <div class="stat"><b>10+</b><small>Core skills</small></div>
+          <div class="stat"><b>Indore</b><small>Madhya Pradesh</small></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3 style="margin:0 0 10px">Quick Info</h3>
+        <ul class="list">
+          <li><span class="bullet"></span> MCA — Shri Vaishnav Institute of Computer Applications (CGPA 7.77/10)</li>
+          <li><span class="bullet"></span> MERN Stack Developer Intern @ DevQAExpert Solution Pvt Ltd (Jan–Apr 2025)</li>
+          <li><span class="bullet"></span> Based in Indore, Madhya Pradesh</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container grid grid-2">
+      <div class="card">
+        <h2>About</h2>
+        <p>
+          I’m Anirudh Sharma (b. 30 Jan 2003) — a <b>MERN Stack Developer</b> who enjoys crafting robust, accessible user interfaces and pragmatic backends. I thrive on learning fast, solving problems and collaborating to ship value. Outside of work, I enjoy watching movies and playing video games.
+        </p>
+        <div class="tags" aria-label="Contact quick links">
+          <a class="tag" href="mailto:sanirudh499@gmail.com">sanirudh499@gmail.com</a>
+          <a class="tag" href="tel:+917610183808">+91 76101 83808</a>
+          <span class="tag">Indore, MP</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Key Expertise</h3>
+        <div class="tags" id="skills-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">React.js</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Express.js</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">C</span>
+          <span class="tag">Bootstrap</span>
+        </div>
+        <p style="color:var(--muted);margin-top:10px">Always learning, improving and shipping.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS (progress bars) -->
+  <section id="skills">
+    <div class="container">
+      <h2>Skills</h2>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+        <div class="card">
+          <h3>Frontend</h3>
+          <ul class="list">
+            <li><span class="bullet"></span> React (SPA, hooks, routing)</li>
+            <li><span class="bullet"></span> Responsive & Accessible UI</li>
+            <li><span class="bullet"></span> CSS architecture (BEM/utility)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Backend</h3>
+          <ul class="list">
+            <li><span class="bullet"></span> Node.js + Express</li>
+            <li><span class="bullet"></span> RESTful APIs</li>
+            <li><span class="bullet"></span> MongoDB data modeling</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Tooling</h3>
+          <ul class="list">
+            <li><span class="bullet"></span> Git & GitHub</li>
+            <li><span class="bullet"></span> Bootstrap</li>
+            <li><span class="bullet"></span> Basic Python/Flask</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="proj-grid">
+        <article class="proj card">
+          <div class="cover">Restaurant Partner Web Platform</div>
+          <h4>Restaurant Partner Web Platform</h4>
+          <p class="meta">Feb–May 2025 • Solo</p>
+          <p>
+            Built a comprehensive platform for restaurant partners to register, manage orders, track payments, upload documents and monitor performance, with scalable architecture and consistent UI.
+          </p>
+          <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">Node</span>
+            <span class="tag">Express</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Bootstrap</span>
+          </div>
+        </article>
+        <article class="proj card">
+          <div class="cover">Weather API Website</div>
+          <h4>Weather API Website</h4>
+          <p class="meta">Oct–Dec 2024 • Solo • College Minor</p>
+          <p>
+            A weather-focused site featuring current weather, manual location search with map & narration, 7‑day forecasts, an event planner (indoor/outdoor suggestions), daily quizzes and fun facts.
+          </p>
+          <div class="tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Python</span>
+            <span class="tag">Flask</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="item card">
+          <h4>MERN Stack Developer Intern</h4>
+          <div class="where">DevQAExpert Solution Pvt Ltd • Jan 22, 2025 – Apr 30, 2025</div>
+          <ul class="list" style="margin-top:10px">
+            <li><span class="bullet"></span> Built full‑stack features with <b>MongoDB, Express, React, Node</b>.</li>
+            <li><span class="bullet"></span> Implemented responsive and dynamic UIs; developed REST APIs.</li>
+            <li><span class="bullet"></span> Contributed frontend UI for live projects and team tasks.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="container">
+      <h2>Education</h2>
+      <div class="timeline">
+        <div class="item card">
+          <h4>Master of Computer Applications (M.C.A.)</h4>
+          <div class="where">Shri Vaishnav Institute of Computer Applications • 2023 – 2025 • CGPA 7.77/10</div>
+          <div class="where">Shri Vaishnav Vidyapeeth Vishwavidyalaya, Indore</div>
+        </div>
+        <div class="item card">
+          <h4>Bachelor of Commerce – Computer Applications</h4>
+          <div class="where">Shri Atal Bihari Vajpayee Government Arts & Commerce College • 2020 – 2023 • 70.88%</div>
+          <div class="where">Indore, Madhya Pradesh</div>
+        </div>
+        <div class="item card">
+          <h4>Higher Secondary (12th)</h4>
+          <div class="where">Brilliant Higher Secondary School, Indore • 2020 • 87.40% (MP Board)</div>
+        </div>
+        <div class="item card">
+          <h4>Secondary (10th)</h4>
+          <div class="where">Brilliant Higher Secondary School, Indore • 2018 • 78% (MP Board)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certs">
+    <div class="container">
+      <h2>Certifications</h2>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+        <div class="card">
+          <h3>Problem Solving through Programming in C</h3>
+          <p class="meta">Score: 60/100</p>
+        </div>
+        <div class="card">
+          <h3>Enhancing Soft Skills and Personality</h3>
+          <p class="meta">Score: 68/100</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container grid grid-2">
+      <div class="card">
+        <h2>Contact</h2>
+        <p>Want to collaborate or discuss an opportunity? I’m available for MERN stack roles and internships.</p>
+        <ul class="list">
+          <li><span class="bullet"></span> <b>Email:</b> <a href="mailto:sanirudh499@gmail.com">sanirudh499@gmail.com</a></li>
+          <li><span class="bullet"></span> <b>Phone:</b> <a href="tel:+917610183808">+91 76101 83808</a></li>
+          <li><span class="bullet"></span> <b>Location:</b> Indore, Madhya Pradesh</li>
+        </ul>
+      </div>
+      <form class="card" id="contactForm" onsubmit="return handleSubmit(event)">
+        <h3>Send a message</h3>
+        <label> Your Name<br>
+          <input type="text" name="name" required placeholder="Jane Doe" />
+        </label>
+        <label> Your Email<br>
+          <input type="email" name="email" required placeholder="jane@example.com" />
+        </label>
+        <label> Message<br>
+          <textarea name="message" rows="5" required placeholder="Hi Anirudh, let's work together on..."></textarea>
+        </label>
+        <div style="display:flex;gap:10px;align-items:center">
+          <button class="btn" type="submit">Send</button>
+          <span id="formStatus" aria-live="polite" style="color:var(--muted)"></span>
+        </div>
+        <p style="color:var(--muted);font-size:13px;margin-top:8px">This demo form doesn’t send email. Hook it to a backend like Formspree/EmailJS.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot">
+      <div>© <span id="year"></span> Anirudh Sharma</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="tag" href="#top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    /* Form elements styled separately to keep things tidy */
+    input, textarea{width:100%;margin-top:6px;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.12);color:var(--text)}
+    input:focus, textarea:focus{outline:none;box-shadow:var(--ring);border-color:transparent}
+    label{display:block;margin:10px 0}
+  </style>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      const open = mobileMenu.hasAttribute('hidden') ? false : true;
+      if(open){
+        mobileMenu.setAttribute('hidden','');
+        menuBtn.setAttribute('aria-expanded','false');
+        menuBtn.textContent = 'Menu';
+      }else{
+        mobileMenu.removeAttribute('hidden');
+        menuBtn.setAttribute('aria-expanded','true');
+        menuBtn.textContent = 'Close';
+      }
+    });
+
+    // Simple intersection-reveal animation
+    const reveal = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.animate([{opacity:0, transform:'translateY(12px)'},{opacity:1, transform:'translateY(0)'}],{duration:600, easing:'cubic-bezier(.2,.7,.2,1)', fill:'forwards'});
+          reveal.unobserve(e.target);
+        }
+      })
+    },{threshold:.15});
+    document.querySelectorAll('section .card, .proj, .hero-card, .stat').forEach(el=>reveal.observe(el));
+
+    // Contact form demo
+    function handleSubmit(e){
+      e.preventDefault();
+      const status = document.getElementById('formStatus');
+      status.textContent = 'Sending…';
+      setTimeout(()=>{status.textContent='Message sent (demo) — connect via email/phone!';}, 800);
+      e.target.reset();
+      return false;
+    }
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
