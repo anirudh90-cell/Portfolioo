@@ -1,455 +1,427 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Anirudh Sharma — MERN Stack Developer</title>
-  <meta name="description" content="Portfolio of Anirudh Sharma — MERN Stack developer, MCA student from Indore. Projects, skills, experience and contact." />
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anirudh Sharma | MERN Stack Developer</title>
+  <meta name="description" content="Anirudh Sharma – MERN Stack Developer (Indore). Portfolio, projects, skills, experience and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* --------- Root colors & basic reset --------- */
     :root{
-      --bg:#0b1220;
-      --panel:#0f1724;
-      --muted:#94a3b8;
-      --text:#e6eef8;
-      --accent:#56e0c5;
-      --accent-2:#9b7bff;
-      --glass: rgba(255,255,255,0.03);
-      --radius:16px;
+      /* Inspired by modern portfolio palettes while staying original */
+      --bg:#0f1220;          /* rich charcoal */
+      --panel:#14182b;       /* slightly lighter */
+      --muted:#94a3b8;       /* slate */
+      --text:#e6f1ff;        /* near-white */
+      --accent:#56e0c5;      /* teal-mint */
+      --accent-2:#a78bfa;    /* soft violet */
+      --danger:#ff6b6b;
+      --ring: 0 0 0 3px rgba(86,224,197,.25);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
       --maxw:1100px;
-      --shadow: 0 10px 30px rgba(2,6,23,.6);
-      --glass-2: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:
-        radial-gradient(800px 400px at 80% -10%, rgba(86,224,197,0.06), transparent 30%),
-        radial-gradient(700px 350px at -10% 10%, rgba(155,123,255,0.04), transparent 25%),
-        var(--bg);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.55;
-    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(1200px 600px at 80% -20%, rgba(167,139,250,.15), transparent 60%),radial-gradient(900px 500px at -10% 10%, rgba(86,224,197,.12), transparent 60%),var(--bg);color:var(--text);font:400 16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif}
     a{color:var(--accent);text-decoration:none}
-    img{display:block;max-width:100%}
+    img{max-width:100%;height:auto;display:block}
+    
+    /* Header */
+    .site-header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.2) blur(10px);background:linear-gradient(180deg, rgba(15,18,32,.9), rgba(15,18,32,.6));border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{max-width:var(--maxw);margin:auto;padding:10px 18px;display:flex;align-items:center;gap:10px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px rgba(86,224,197,.2)}
+    .spacer{flex:1}
+    .nav a{color:var(--text);opacity:.85}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{padding:8px 12px;border-radius:999px}
+    .nav-links a:hover, .nav-links a:focus{background:rgba(255,255,255,.06);outline:none}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;border-radius:999px;background:linear-gradient(135deg, var(--accent), #79ffe1);color:#06271f;font-weight:700;border:none;cursor:pointer;box-shadow:var(--shadow)}
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,.12);color:var(--text);box-shadow:none}
+    .btn:focus{outline:none;box-shadow:var(--ring)}
 
-    /* ---------- Layout ---------- */
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:28px}
-    header.sitebar{
-      position:sticky;top:12px;z-index:60;
-      display:flex;align-items:center;gap:18px;justify-content:space-between;
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.04);
-      padding:10px 18px;border-radius:14px;box-shadow:var(--shadow);
-      backdrop-filter: blur(6px) saturate(.9);
-      margin:18px;
-    }
-    .brand{display:flex;gap:12px;align-items:center}
-    .brand .dot{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px rgba(86,224,197,.12)}
-    nav.links{display:flex;gap:12px;align-items:center}
-    nav.links a{padding:8px 12px;border-radius:999px;color:var(--text);font-weight:600;opacity:.9}
-    nav.links a:hover{background:rgba(255,255,255,0.03)}
-    .menu-toggle{display:none;border:0;background:transparent;color:var(--text);font-weight:700;cursor:pointer;padding:8px 10px}
+    /* Sections */
+    section{padding:100px 18px}
+    .container{max-width:var(--maxw);margin:auto}
+    .grid{display:grid;gap:30px}
+    .grid-2{grid-template-columns:1.1fr .9fr}
 
-    /* ---------- HERO ---------- */
-    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:start;margin:34px;padding:40px;border-radius:18px;background:var(--glass-2);border:1px solid rgba(255,255,255,0.03);box-shadow:var(--shadow)}
-    .intro .eyebrow{display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.02);font-size:13px;color:var(--muted);border:1px solid rgba(255,255,255,0.03)}
-    .intro h1{font-size:44px;line-height:1.05;margin:16px 0 8px}
-    .intro h1 span{color:var(--accent)}
-    .intro p{color:var(--muted);max-width:68ch}
-    .cta-row{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
-    .btn{background:linear-gradient(135deg,var(--accent), #79ffe1);color:#04251f;padding:12px 16px;border-radius:999px;font-weight:700;border:0;cursor:pointer;box-shadow:0 8px 24px rgba(86,224,197,.08)}
-    .btn.alt{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
-    .stats{display:flex;gap:12px;margin-top:20px}
-    .stat{background:rgba(255,255,255,.02);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);min-width:110px}
-    .stat b{display:block;font-size:20px}
+    /* Hero */
+    .hero{padding-top:120px}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:12px;color:var(--muted);background:rgba(255,255,255,.03)}
+    .eyebrow .ping{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 10px rgba(86,224,197,.15)}
+    .hero h1{font-size:48px;line-height:1.1;margin:14px 0 8px}
+    .hero h1 span{color:var(--accent)}
+    .hero p{max-width:720px;color:var(--muted)}
+    .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .stats{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px}
+    .stat{min-width:140px;padding:12px 14px;border-radius:14px;background:rgba(167,139,250,.08);border:1px solid rgba(167,139,250,.25)}
+    .stat b{display:block;font-size:22px}
 
-    /* ---------- Profile Card ---------- */
-    .profile-card{padding:18px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border:1px solid rgba(255,255,255,0.03)}
-    .profile-top{display:flex;gap:12px;align-items:center}
-    .avatar{width:86px;height:86px;border-radius:12px;overflow:hidden;border:2px solid rgba(255,255,255,.04)}
-    .avatar img{width:100%;height:100%;object-fit:cover}
-    .meta small{color:var(--muted);display:block}
-    .quick-list{margin-top:12px;color:var(--muted);font-size:14px}
+    /* Cards */
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    .card h3{margin:.2rem 0 1rem}
 
-    /* ---------- Sections ---------- */
-    section.block{margin:28px;padding:28px;border-radius:14px;background:var(--panel);border:1px solid rgba(255,255,255,0.03)}
-    section.block h2{font-size:22px;margin-bottom:12px}
-    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .card{background:var(--glass);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,.03)}
-    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-    .tag{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,0.03);color:var(--muted);font-size:13px}
+    /* Tags */
+    .tags{display:flex;flex-wrap:wrap;gap:8px}
+    .tag{padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);color:var(--muted);font-size:13px;background:rgba(255,255,255,.02)}
 
-    /* Projects grid */
-    .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .proj .cover{height:140px;border-radius:12px;background:linear-gradient(120deg, rgba(86,224,197,.12), rgba(155,123,255,.08));display:grid;place-items:center;font-weight:700;color:var(--text);border:1px solid rgba(255,255,255,0.03)}
+    /* Lists */
+    .list{display:grid;gap:14px}
+    .list li{display:flex;gap:12px;align-items:flex-start}
+    .bullet{width:9px;height:9px;border-radius:50%;margin-top:7px;background:var(--accent)}
 
-    /* Timeline / experience */
-    .timeline .item{padding-left:14px;border-left:2px solid rgba(86,224,197,0.12);margin-bottom:18px}
-    .timeline .item .when{color:var(--muted);font-size:13px;margin-top:6px}
-    .timeline .item ul{margin-top:8px;color:var(--muted)}
+    /* Project grid */
+    .proj-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr))}
+    .proj{position:relative;overflow:hidden}
+    .proj h4{margin:.3rem 0 .2rem}
+    .proj .meta{font-size:13px;color:var(--muted)}
+    .proj .cover{aspect-ratio:16/10;border-radius:14px;background:linear-gradient(120deg, rgba(86,224,197,.25), rgba(167,139,250,.25));border:1px solid rgba(255,255,255,.08);display:grid;place-items:center;font-weight:700}
 
-    /* Contact form */
-    form.contact-form label{display:block;margin-top:10px;color:var(--muted);font-size:14px}
-    input,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);margin-top:6px}
-    input:focus,textarea:focus{outline:none;box-shadow:0 0 0 4px rgba(86,224,197,0.08);border-color:transparent}
+    /* Timeline */
+    .timeline{position:relative}
+    .timeline:before{content:"";position:absolute;left:16px;top:0;bottom:0;width:2px;background:linear-gradient(var(--accent), transparent)}
+    .item{position:relative;padding-left:44px;margin-bottom:24px}
+    .item:before{content:"";position:absolute;left:10px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px rgba(86,224,197,.18)}
+    .item h4{margin:0}
+    .item .where{color:var(--muted);font-size:14px}
 
     /* Footer */
-    footer{margin:28px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);text-align:center;color:var(--muted)}
+    footer{padding:40px 18px;border-top:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.2)}
+    .foot{max-width:var(--maxw);margin:auto;display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;color:var(--muted)}
 
-    /* ---------- Utilities & responsive ---------- */
-    .muted{color:var(--muted)}
-    .small{font-size:13px}
-    .hide-mobile{display:block}
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr; padding:18px}
-      .wrap{padding:12px}
-      nav.links{display:none}
-      .menu-toggle{display:inline-flex}
-      .two-col{grid-template-columns:1fr}
-      .hide-mobile{display:none}
+    /* Responsive */
+    @media (max-width: 900px){
+      .grid-2{grid-template-columns:1fr}
+      .hero h1{font-size:40px}
+      .site-header .nav-links{display:none}
+      .menu-btn{display:inline-flex}
+    }
+    @media (min-width: 901px){
+      .menu-btn{display:none}
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-
-    <!-- Header -->
-    <header class="sitebar" role="banner" aria-label="Main header">
-      <div class="brand" aria-hidden="true">
-        <span class="dot" title="Anirudh's logo"></span>
-        <div>
-          <div style="font-weight:800">ANIRUDH SHARMA</div>
-          <div class="small muted">MERN Stack Developer • Indore</div>
+  <header class="site-header" id="top">
+    <nav class="nav">
+      <div class="brand"><span class="dot" aria-hidden="true"></span> <span>ANIRUDH&nbsp;SHARMA</span></div>
+      <div class="spacer"></div>
+      <div class="nav-links" role="navigation" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#certs">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="btn secondary menu-btn" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+    </nav>
+    <div id="mobileMenu" hidden>
+      <div class="container" style="padding:12px 18px 18px">
+        <div class="tags" role="navigation" aria-label="Mobile">
+          <a class="tag" href="#home">Home</a>
+          <a class="tag" href="#about">About</a>
+          <a class="tag" href="#skills">Skills</a>
+          <a class="tag" href="#projects">Projects</a>
+          <a class="tag" href="#experience">Experience</a>
+          <a class="tag" href="#education">Education</a>
+          <a class="tag" href="#certs">Certifications</a>
+          <a class="tag" href="#contact">Contact</a>
         </div>
       </div>
+    </div>
+  </header>
 
-      <nav>
-        <div class="links" role="navigation" aria-label="Primary navigation">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#experience">Experience</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <button class="menu-toggle" id="menuBtn" aria-expanded="false" aria-controls="mobileNav">Menu</button>
-      </nav>
-    </header>
-
-    <!-- HERO -->
-    <main id="home" class="hero" aria-labelledby="hero-heading">
-      <div class="intro">
-        <div class="eyebrow" aria-hidden="true"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block"></span> Available for internships & roles</div>
-        <h1 id="hero-heading">Hi, I'm <span>Anirudh Sharma</span><br><small class="small muted">MERN Stack Developer • MCA (2023–2025)</small></h1>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="container grid grid-2">
+      <div>
+        <span class="eyebrow"><span class="ping" aria-hidden="true"></span> MERN Stack Developer • Indore</span>
+        <h1>Hi, I'm <span>Anirudh Sharma</span><br>Building fast, clean and human‑friendly web apps.</h1>
         <p>
-          I build fast, responsive & accessible web applications using the MERN stack. I focus on clear UI, pragmatic architectures and shipping features that users love.
-          I enjoy solving problems, learning new tech, and improving product quality through careful design and testing.
+          MCA student (2023–2025) and <b>MERN</b> developer focused on responsive, efficient solutions that elevate user experience. I love solving problems, learning continuously and delivering polished UIs.
         </p>
-
         <div class="cta-row">
           <a class="btn" href="#contact">Contact Me</a>
-          <a class="btn alt" href="#projects">View Projects</a>
+          <a class="btn secondary" href="#projects">View Projects</a>
         </div>
-
-        <div class="stats" role="status" aria-live="polite">
-          <div class="stat"><b>1+ yr</b><small class="muted">Hands-on dev</small></div>
-          <div class="stat"><b>10+</b><small class="muted">Core skills</small></div>
-          <div class="stat"><b>Indore</b><small class="muted">Madhya Pradesh</small></div>
+        <div class="stats">
+          <div class="stat"><b>1+ yr</b><small>Hands‑on dev</small></div>
+          <div class="stat"><b>10+</b><small>Core skills</small></div>
+          <div class="stat"><b>Indore</b><small>Madhya Pradesh</small></div>
         </div>
-
       </div>
+      <div class="hero-card">
+        <h3 style="margin:0 0 10px">Quick Info</h3>
+        <ul class="list">
+          <li><span class="bullet"></span> MCA — Shri Vaishnav Institute of Computer Applications (CGPA 7.77/10)</li>
+          <li><span class="bullet"></span> MERN Stack Developer Intern @ DevQAExpert Solution Pvt Ltd (Jan–Apr 2025)</li>
+          <li><span class="bullet"></span> Based in Indore, Madhya Pradesh</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-      <aside class="profile-card" aria-label="Profile card">
-        <div class="profile-top">
-          <div class="avatar">
-            <img src="https://github.com/anirudhsharma30.png" alt="Anirudh Sharma — avatar">
-          </div>
-          <div class="meta">
-            <div style="font-weight:700">Anirudh Sharma</div>
-            <small class="muted">MERN Stack Developer</small>
-            <small class="muted">Indore, MP</small>
-          </div>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container grid grid-2">
+      <div class="card">
+        <h2>About</h2>
+        <p>
+          I’m Anirudh Sharma (b. 30 Jan 2003) — a <b>MERN Stack Developer</b> who enjoys crafting robust, accessible user interfaces and pragmatic backends. I thrive on learning fast, solving problems and collaborating to ship value. Outside of work, I enjoy watching movies and playing video games.
+        </p>
+        <div class="tags" aria-label="Contact quick links">
+          <a class="tag" href="mailto:sanirudh499@gmail.com">sanirudh499@gmail.com</a>
+          <a class="tag" href="tel:+917610183808">+91 76101 83808</a>
+          <span class="tag">Indore, MP</span>
         </div>
-
-        <div class="quick-list">
-          <div><strong>Email:</strong> <a href="mailto:sanirudh499@gmail.com">sanirudh499@gmail.com</a></div>
-          <div><strong>Phone:</strong> <a href="tel:+917610183808">+91 76101 83808</a></div>
-          <div style="margin-top:8px" class="small muted">Open to internships & full-time roles • Available immediately</div>
-        </div>
-
-        <div style="margin-top:12px" class="tags">
-          <span class="tag">React</span>
+      </div>
+      <div class="card">
+        <h3>Key Expertise</h3>
+        <div class="tags" id="skills-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">React.js</span>
           <span class="tag">Node.js</span>
-          <span class="tag">Express</span>
+          <span class="tag">Express.js</span>
           <span class="tag">MongoDB</span>
-          <span class="tag">JS</span>
+          <span class="tag">C</span>
           <span class="tag">Bootstrap</span>
         </div>
-      </aside>
-    </main>
-
-    <!-- ABOUT -->
-    <section id="about" class="block" aria-labelledby="about-heading">
-      <h2 id="about-heading">About</h2>
-      <div class="two-col" style="align-items:start">
-        <div class="card">
-          <p>
-            I’m <strong>Anirudh Sharma</strong> (b. 30 Jan 2003). Currently pursuing MCA (2023–2025) and building web applications using the MERN stack.
-            I enjoy turning UI/UX ideas into working products and writing clean, maintainable code. My strengths include rapid prototyping, responsive layouts, API design and working in small teams with Git-based workflows.
-          </p>
-
-          <h3 style="margin-top:12px">Core strengths</h3>
-          <ul style="margin-top:8px;color:var(--muted);">
-            <li>Frontend: React.js, component design, responsive & accessible UI</li>
-            <li>Backend: Node.js, Express, REST API design, authentication</li>
-            <li>Database: MongoDB — schema design & CRUD</li>
-            <li>Tools: Git, Bootstrap, basic Python, debugging & testing</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Education & Quick Info</h3>
-          <div style="color:var(--muted);margin-top:8px">
-            <div><strong>M.C.A.</strong> — Shri Vaishnav Institute of Computer Applications (2023–2025) • CGPA 7.77/10</div>
-            <div style="margin-top:6px"><strong>B.Com (Computer Applications)</strong> — Shri Atal Bihari Vajpayee Govt. Arts & Commerce College (2020–2023) • 70.88%</div>
-            <div style="margin-top:6px"><strong>12th</strong> — Brilliant Higher Secondary School • 87.40% (MP Board)</div>
-            <div style="margin-top:6px"><strong>10th</strong> — Brilliant Higher Secondary School • 78% (MP Board)</div>
-          </div>
-        </div>
+        <p style="color:var(--muted);margin-top:10px">Always learning, improving and shipping.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="block" aria-labelledby="skills-heading">
-      <h2 id="skills-heading">Skills</h2>
-      <div class="two-col">
+  <!-- SKILLS (progress bars) -->
+  <section id="skills">
+    <div class="container">
+      <h2>Skills</h2>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
         <div class="card">
           <h3>Frontend</h3>
-          <p class="muted">React (hooks, context, routing), HTML5, CSS3, Bootstrap, responsive & accessible UI.</p>
-          <div style="margin-top:12px">
-            <div class="small muted">React</div>
-            <div style="height:8px;background:rgba(255,255,255,0.03);border-radius:8px;margin-top:6px;overflow:hidden">
-              <div style="width:78%;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));"></div>
-            </div>
-          </div>
+          <ul class="list">
+            <li><span class="bullet"></span> React (SPA, hooks, routing)</li>
+            <li><span class="bullet"></span> Responsive & Accessible UI</li>
+            <li><span class="bullet"></span> CSS architecture (BEM/utility)</li>
+          </ul>
         </div>
-
         <div class="card">
-          <h3>Backend & Tools</h3>
-          <p class="muted">Node.js, Express, REST APIs, MongoDB, Git, basic Python, deployment fundamentals.</p>
-          <div style="margin-top:12px">
-            <div class="small muted">Node.js</div>
-            <div style="height:8px;background:rgba(255,255,255,0.03);border-radius:8px;margin-top:6px;overflow:hidden">
-              <div style="width:70%;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));"></div>
-            </div>
-          </div>
+          <h3>Backend</h3>
+          <ul class="list">
+            <li><span class="bullet"></span> Node.js + Express</li>
+            <li><span class="bullet"></span> RESTful APIs</li>
+            <li><span class="bullet"></span> MongoDB data modeling</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Tooling</h3>
+          <ul class="list">
+            <li><span class="bullet"></span> Git & GitHub</li>
+            <li><span class="bullet"></span> Bootstrap</li>
+            <li><span class="bullet"></span> Basic Python/Flask</li>
+          </ul>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="block" aria-labelledby="projects-heading">
-      <h2 id="projects-heading">Projects</h2>
-
-      <div class="proj-grid" role="list">
-
-        <!-- Project 1 -->
-        <article class="proj card" role="listitem" aria-labelledby="p1">
-          <div class="cover" aria-hidden="true">Weather Wave — Full Stack</div>
-          <h3 id="p1">Weather Wave Website</h3>
-          <p class="muted small">
-            A weather-focused web application integrating OpenWeather API, maps, and accessible narration — built to be interactive and informative.
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="proj-grid">
+        <article class="proj card">
+          <div class="cover">Restaurant Partner Web Platform</div>
+          <h4>Restaurant Partner Web Platform</h4>
+          <p class="meta">Feb–May 2025 • Solo</p>
+          <p>
+            Built a comprehensive platform for restaurant partners to register, manage orders, track payments, upload documents and monitor performance, with scalable architecture and consistent UI.
           </p>
-
-          <div style="margin-top:10px;color:var(--muted)">
-            <strong>Key features & responsibilities</strong>
-            <ul style="margin-top:8px">
-              <li>Integrated OpenWeather API to fetch current weather and 7-day forecasts for user location and manual searches.</li>
-              <li>Implemented automatic geolocation with graceful fallback to manual city search; used map pins to highlight selected locations.</li>
-              <li>Built an AI-like narration feature (text-to-speech) to read current weather for accessibility.</li>
-              <li>Added an event planner feature that advises indoor/outdoor events based on forecast for chosen date (7-day window).</li>
-              <li>Designed a gamified daily quiz (7 Ques) with immediate feedback; used animations for correct/wrong answers to boost engagement.</li>
-            </ul>
-            <div style="margin-top:8px">Tech: HTML, CSS, JS, OpenWeather API, Map integration, Web Speech API.</div>
+          <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">Node</span>
+            <span class="tag">Express</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Bootstrap</span>
           </div>
         </article>
-
-        <!-- Project 2 -->
-        <article class="proj card" role="listitem" aria-labelledby="p2">
-          <div class="cover" aria-hidden="true">Restaurant Partner Platform</div>
-          <h3 id="p2">Restaurant Partner Platform</h3>
-          <p class="muted small">A partner portal for restaurants to manage registrations, menus, orders, and documents — focused on scalable UX and secure data flows.</p>
-
-          <div style="margin-top:10px;color:var(--muted)">
-            <strong>Key features & responsibilities</strong>
-            <ul style="margin-top:8px">
-              <li>Implemented frontend forms for partner onboarding (documents, menus) with client-side validation and feedback.</li>
-              <li>Built REST APIs with Node.js & Express for partner CRUD, order tracking and payment status updates.</li>
-              <li>Designed MongoDB schemas for partners, menus and orders; implemented indexing for performant queries.</li>
-              <li>Ensured role-based access for partners and admins, and implemented secure file upload flows.</li>
-            </ul>
-            <div style="margin-top:8px">Tech: React/vanilla JS, Node.js, Express, MongoDB, Bootstrap.</div>
+        <article class="proj card">
+          <div class="cover">Weather API Website</div>
+          <h4>Weather API Website</h4>
+          <p class="meta">Oct–Dec 2024 • Solo • College Minor</p>
+          <p>
+            A weather-focused site featuring current weather, manual location search with map & narration, 7‑day forecasts, an event planner (indoor/outdoor suggestions), daily quizzes and fun facts.
+          </p>
+          <div class="tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Python</span>
+            <span class="tag">Flask</span>
           </div>
         </article>
-
-        <!-- Project 3 (portfolio itself) -->
-        <article class="proj card" role="listitem" aria-labelledby="p3">
-          <div class="cover" aria-hidden="true">Portfolio</div>
-          <h3 id="p3">Personal Portfolio</h3>
-          <p class="muted small">This portfolio demonstrates UI consistency, responsive layout, and project storytelling — used as a professional showcase.</p>
-          <div style="margin-top:8px;color:var(--muted)">Tech: HTML, CSS, JavaScript • Single-file deployable.</div>
-        </article>
-
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="block" aria-labelledby="exp-heading">
-      <h2 id="exp-heading">Experience</h2>
-
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <h2>Experience</h2>
       <div class="timeline">
         <div class="item card">
-          <h3>MERN Stack Developer Intern — DevQAExpert Solution Pvt Ltd</h3>
-          <div class="when small muted">Jan 22, 2025 – Apr 30, 2025</div>
-          <div style="margin-top:8px;color:var(--muted)">
-            <p>
-              Worked on full-stack web features and collaborated with the QA team to stabilize releases. Responsibilities covered both frontend and backend tasks, plus testing and documentation.
-            </p>
-            <ul style="margin-top:8px">
-              <li>Built responsive UI components in React and vanilla JS to meet product requirements.</li>
-              <li>Implemented REST APIs using Node.js & Express, handling authentication, validation and error flows.</li>
-              <li>Modeled data with MongoDB, created seed scripts and implemented CRUD endpoints.</li>
-              <li>Worked closely with QA to reproduce, document and fix bugs; improved code quality through reviews and tests.</li>
-              <li>Used Git/GitHub for version control, following branch-based workflow and pull requests.</li>
-            </ul>
-          </div>
+          <h4>MERN Stack Developer Intern</h4>
+          <div class="where">DevQAExpert Solution Pvt Ltd • Jan 22, 2025 – Apr 30, 2025</div>
+          <ul class="list" style="margin-top:10px">
+            <li><span class="bullet"></span> Built full‑stack features with <b>MongoDB, Express, React, Node</b>.</li>
+            <li><span class="bullet"></span> Implemented responsive and dynamic UIs; developed REST APIs.</li>
+            <li><span class="bullet"></span> Contributed frontend UI for live projects and team tasks.</li>
+          </ul>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- EDUCATION & CERTIFICATIONS -->
-    <section id="education" class="block" aria-labelledby="edu-heading">
-      <h2 id="edu-heading">Education & Certifications</h2>
-      <div class="two-col">
-        <div class="card">
-          <h3>Education</h3>
-          <div class="muted" style="margin-top:8px">
-            <div><strong>M.C.A.</strong> — Shri Vaishnav Institute of Computer Applications (2023–2025) • CGPA 7.77/10</div>
-            <div style="margin-top:6px"><strong>B.Com (Computer Applications)</strong> — Shri Atal Bihari Vajpayee Govt. Arts & Commerce College (2020–2023) • 70.88%</div>
-          </div>
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="container">
+      <h2>Education</h2>
+      <div class="timeline">
+        <div class="item card">
+          <h4>Master of Computer Applications (M.C.A.)</h4>
+          <div class="where">Shri Vaishnav Institute of Computer Applications • 2023 – 2025 • CGPA 7.77/10</div>
+          <div class="where">Shri Vaishnav Vidyapeeth Vishwavidyalaya, Indore</div>
         </div>
-
-        <div class="card">
-          <h3>Certifications</h3>
-          <div class="muted" style="margin-top:8px">
-            <div><strong>Problem Solving through Programming in C</strong> — Score: 60/100</div>
-            <div style="margin-top:6px"><strong>Enhancing Soft Skills and Personality</strong> — Score: 68/100</div>
-          </div>
+        <div class="item card">
+          <h4>Bachelor of Commerce – Computer Applications</h4>
+          <div class="where">Shri Atal Bihari Vajpayee Government Arts & Commerce College • 2020 – 2023 • 70.88%</div>
+          <div class="where">Indore, Madhya Pradesh</div>
+        </div>
+        <div class="item card">
+          <h4>Higher Secondary (12th)</h4>
+          <div class="where">Brilliant Higher Secondary School, Indore • 2020 • 87.40% (MP Board)</div>
+        </div>
+        <div class="item card">
+          <h4>Secondary (10th)</h4>
+          <div class="where">Brilliant Higher Secondary School, Indore • 2018 • 78% (MP Board)</div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="block" aria-labelledby="contact-heading">
-      <h2 id="contact-heading">Contact</h2>
-      <div class="two-col">
+  <!-- CERTIFICATIONS -->
+  <section id="certs">
+    <div class="container">
+      <h2>Certifications</h2>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
         <div class="card">
-          <h3>Get in touch</h3>
-          <p class="muted">I’m available for internships and MERN stack roles. If you have a role or a project to discuss, reach out at:</p>
-          <p style="margin-top:10px"><strong>Email:</strong> <a href="mailto:sanirudh499@gmail.com">sanirudh499@gmail.com</a></p>
-          <p><strong>Phone:</strong> <a href="tel:+917610183808">+91 76101 83808</a></p>
-
-          <div style="margin-top:12px" class="tags">
-            <a class="tag" href="https://github.com/anirudhsharma30" target="_blank" rel="noopener">GitHub</a>
-            <a class="tag" href="https://anirudhsharma30.github.io/protfolio/" target="_blank" rel="noopener">Live portfolio</a>
-          </div>
+          <h3>Problem Solving through Programming in C</h3>
+          <p class="meta">Score: 60/100</p>
         </div>
-
-        <form class="card contact-form" id="contactForm" onsubmit="return handleContact(event)">
-          <label for="name">Your Name</label>
-          <input id="name" name="name" required placeholder="Your name" />
-
-          <label for="email">Your Email</label>
-          <input id="email" name="email" type="email" required placeholder="you@example.com" />
-
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required placeholder="Hi Anirudh, ..."></textarea>
-
-          <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
-            <button class="btn" type="submit">Send Message</button>
-            <div id="formStatus" class="muted small" aria-live="polite"></div>
-          </div>
-
-          <p class="small muted" style="margin-top:8px">Demo: This form does not send an email. Hook it to Formspree, EmailJS or a backend to enable sending.</p>
-        </form>
+        <div class="card">
+          <h3>Enhancing Soft Skills and Personality</h3>
+          <p class="meta">Score: 68/100</p>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- FOOTER -->
-    <footer>
-      <div class="small muted">© <span id="year"></span> Anirudh Sharma • Built with ❤️ • Available for hire</div>
-    </footer>
-  </div>
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container grid grid-2">
+      <div class="card">
+        <h2>Contact</h2>
+        <p>Want to collaborate or discuss an opportunity? I’m available for MERN stack roles and internships.</p>
+        <ul class="list">
+          <li><span class="bullet"></span> <b>Email:</b> <a href="mailto:sanirudh499@gmail.com">sanirudh499@gmail.com</a></li>
+          <li><span class="bullet"></span> <b>Phone:</b> <a href="tel:+917610183808">+91 76101 83808</a></li>
+          <li><span class="bullet"></span> <b>Location:</b> Indore, Madhya Pradesh</li>
+        </ul>
+      </div>
+      <form class="card" id="contactForm" onsubmit="return handleSubmit(event)">
+        <h3>Send a message</h3>
+        <label> Your Name<br>
+          <input type="text" name="name" required placeholder="Jane Doe" />
+        </label>
+        <label> Your Email<br>
+          <input type="email" name="email" required placeholder="jane@example.com" />
+        </label>
+        <label> Message<br>
+          <textarea name="message" rows="5" required placeholder="Hi Anirudh, let's work together on..."></textarea>
+        </label>
+        <div style="display:flex;gap:10px;align-items:center">
+          <button class="btn" type="submit">Send</button>
+          <span id="formStatus" aria-live="polite" style="color:var(--muted)"></span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot">
+      <div>© <span id="year"></span> Anirudh Sharma</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="tag" href="#top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    /* Form elements styled separately to keep things tidy */
+    input, textarea{width:100%;margin-top:6px;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.12);color:var(--text)}
+    input:focus, textarea:focus{outline:none;box-shadow:var(--ring);border-color:transparent}
+    label{display:block;margin:10px 0}
+  </style>
 
   <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Mobile menu (simple)
-    const menuBtn = document.getElementById('menuBtn');
-    menuBtn && menuBtn.addEventListener('click', () => {
-      const nav = document.querySelector('nav .links');
-      if (!nav) return;
-      const open = nav.style.display === 'flex';
-      nav.style.display = open ? 'none' : 'flex';
-      menuBtn.setAttribute('aria-expanded', String(!open));
-      menuBtn.textContent = open ? 'Menu' : 'Close';
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      const open = mobileMenu.hasAttribute('hidden') ? false : true;
+      if(open){
+        mobileMenu.setAttribute('hidden','');
+        menuBtn.setAttribute('aria-expanded','false');
+        menuBtn.textContent = 'Menu';
+      }else{
+        mobileMenu.removeAttribute('hidden');
+        menuBtn.setAttribute('aria-expanded','true');
+        menuBtn.textContent = 'Close';
+      }
     });
 
-    // Smooth reveal for sections
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.style.opacity = 1;
-          e.target.style.transform = 'translateY(0)';
-          io.unobserve(e.target);
+    // Simple intersection-reveal animation
+    const reveal = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.animate([{opacity:0, transform:'translateY(12px)'},{opacity:1, transform:'translateY(0)'}],{duration:600, easing:'cubic-bezier(.2,.7,.2,1)', fill:'forwards'});
+          reveal.unobserve(e.target);
         }
-      });
-    }, {threshold: 0.08});
-    document.querySelectorAll('section.block, .card, .proj').forEach(el => {
-      el.style.opacity = 0;
-      el.style.transform = 'translateY(14px)';
-      io.observe(el);
-    });
+      })
+    },{threshold:.15});
+    document.querySelectorAll('section .card, .proj, .hero-card, .stat').forEach(el=>reveal.observe(el));
 
-    // Demo contact handler
-    function handleContact(e){
+    // Contact form demo
+    function handleSubmit(e){
       e.preventDefault();
       const status = document.getElementById('formStatus');
       status.textContent = 'Sending…';
-      setTimeout(()=> {
-        status.textContent = 'Message sent (demo). Please contact via email for real responses.';
-      }, 900);
+      setTimeout(()=>{status.textContent='Message sent (demo) — connect via email/phone!';}, 800);
       e.target.reset();
       return false;
     }
 
-    // Small header hide on scroll
-    (function(){
-      const header = document.querySelector('.sitebar');
-      let lastY = window.scrollY;
-      window.addEventListener('scroll', () => {
-        const y = window.scrollY;
-        if (y > lastY + 10) header.style.transform = 'translateY(-90px)';
-        else if (y < lastY - 10) header.style.transform = 'translateY(0)';
-        lastY = y;
-      });
-    })();
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
